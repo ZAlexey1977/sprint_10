@@ -133,7 +133,13 @@ class P_00 {
   }
 }
 
-// тут пишем класс P_08
+class P_08 extends P_00 {
+  b: number;
+  constructor(a: number, b: number) {
+    super(a);
+    this.b = b;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 // const obj = new P_08(3, 7);
@@ -143,7 +149,13 @@ class P_00 {
 // Создайте класс наследник P_09 для класса P_08. В классе  P_09 добавьте свойство sum равное нулю.
 // Добавьте метод mathSum(), который суммирует this.a и this.b  и кладет результат в this.sum.
 
-// тут пишем класс
+class P_09 extends P_08 {
+  sum: number = 0;
+  mathSum(): number {
+    this.sum = this.a + this.b;
+    return this.sum;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 // const obj_09 = new P_09(20, 30);
