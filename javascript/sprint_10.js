@@ -29,15 +29,21 @@ class Test_03 extends Test_02 {
     }
 }
 // Для проверки кода снимите комментарий ниже
-const obj_03 = new Test_03();
-obj_03.showData();
+// const obj_03 = new Test_03();
+// obj_03.showData();
 // Task 04
-// Наследуйтесьот класса Test_03 создайте класс Test_04. Добавьте функцию конструктор, которая принимает два
+// Наследуйтесь от класса Test_03 создайте класс Test_04. Добавьте функцию конструктор, которая принимает два
 // текстовых параметра и задает с помощью них значения this.data и this.title. Не забывайте,
 // если вы переписываете, создаете заново функцию конструктор, то обязаны вызывать super().
-// тут пишем класс
+class Test_04 extends Test_03 {
+    constructor(data, title) {
+        super();
+        this.data = data;
+        this.title = title;
+    }
+}
 // Для проверки кода снимите комментарий ниже
-// const obj_04 = new Test_04('comon', 'hamon');
+// const obj_04 = new Test_04("comon", "hamon");
 // obj_04.showData();
 // Task 05
 // Итак, мы можем наследоваться и добавлять в наследуемые классы и свойства и методы и даже метод конструктор.
@@ -52,7 +58,11 @@ class M_00 {
         return this.a + this.b;
     }
 }
-// тут пишем класс M_05
+class M_05 extends M_00 {
+    goMath() {
+        return this.a * this.b;
+    }
+}
 // Для проверки кода снимите комментарий ниже
 // const obj_05 = new M_05();
 // console.log(obj_05.goMath()); // 35
@@ -63,7 +73,12 @@ class M_00 {
 // const n = super.goMath();
 // return n % 2 === 0 ? 1 : 0;
 // т.е. строкой n = super.goMath() мы выполняем код из метода родителя (суммируем числа), а в данном методе проверяем является ли число четным.
-// тут пишем класс
+class M_06 extends M_00 {
+    goMath() {
+        const n = super.goMath();
+        return n % 2 === 0 ? 1 : 0;
+    }
+}
 // Для проверки кода снимите комментарий ниже
 // const obj_06 = new M_06();
 // console.log(obj_06.goMath());
@@ -75,7 +90,12 @@ class M_00 {
 // const n = super.goMath();
 // return n % 2 === 0;
 // Проверьте роботу. Я надеюсь, что и в предыдущем и в текущих заданиях вы не забываете указывать тип данных, который возвращает метод.
-// тут пишем класс
+class M_07 extends M_00 {
+    isEven() {
+        const n = super.goMath();
+        return n % 2 === 0;
+    }
+}
 // Для проверки кода снимите комментарий ниже
 // const obj_07 = new M_07();
 // console.log(obj_07.isEven());
