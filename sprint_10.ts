@@ -208,8 +208,8 @@ class U_02 extends U_01 {
 }
 
 // Для проверки кода снимите комментарий ниже
-const user_02 = new U_02("alEx", "alex@mail.ua", "qwerty");
-console.log(user_02.prepare("alEx"));
+// const user_02 = new U_02("alEx", "alex@mail.ua", "qwerty");
+// console.log(user_02.prepare("alEx"));
 
 // Task 13
 // Создайте класс U_03, наследуйтесь от класса U_02, и допишите свойство isPasswordCorrect (по умолчанию false)
@@ -219,13 +219,27 @@ console.log(user_02.prepare("alEx"));
 // проверяет что в пароле есть символы в разных регистрах - если нет то  выставляет this.isPasswordCorrect равным false и возвращает false.
 // если проверки пройдены то выставляет this.isPasswordCorrect равным true и возвращает true.
 
-// тут пишем класс
+class U_03 extends U_02 {
+  isPasswordCorrect: boolean = false;
+  validatePassword(): boolean {
+    this.password = this.password.trim();
+    if (this.password.length < 8 || this.password.match(/[A-Z]+/g) == null) {
+      this.isPasswordCorrect = false;
+    } else {
+      this.isPasswordCorrect = true;
+    }
+
+    return this.isPasswordCorrect == true
+      ? (this.isPasswordCorrect = true)
+      : (this.isPasswordCorrect = false);
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 
-// const user_03 =  new U_03('alex', 'alex@mail.ua', 'querty123');
-// user_03.validatePassword();
-// console.log(user_03.isPasswordCorrect);
+const user_03 = new U_03("alex", "alex@mail.ua", "querty123");
+user_03.validatePassword();
+console.log(user_03.isPasswordCorrect);
 
 // Task 14
 // Создайте класс U_04 который наследуется от U_03 и добавьте в него свойство isEmailCorrect равное false.
