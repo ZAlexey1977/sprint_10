@@ -228,18 +228,15 @@ class U_03 extends U_02 {
     } else {
       this.isPasswordCorrect = true;
     }
-
-    return this.isPasswordCorrect == true
-      ? (this.isPasswordCorrect = true)
-      : (this.isPasswordCorrect = false);
+    return this.isPasswordCorrect;
   }
 }
 
 // Для проверки кода снимите комментарий ниже
 
-const user_03 = new U_03("alex", "alex@mail.ua", "querty123");
-user_03.validatePassword();
-console.log(user_03.isPasswordCorrect);
+// const user_03 = new U_03("alex", "alex@mail.ua", "query123");
+// user_03.validatePassword();
+// console.log(user_03.isPasswordCorrect);
 
 // Task 14
 // Создайте класс U_04 который наследуется от U_03 и добавьте в него свойство isEmailCorrect равное false.
@@ -250,13 +247,27 @@ console.log(user_03.isPasswordCorrect);
 // const regEx =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 // if (!regEx.test(this.email)) return false;
 
-// тут пишем класс
+class U_04 extends U_03 {
+  isEmailCorrect: boolean = false;
+
+  validateEmail(): boolean {
+    this.email = super.prepare(this.email);
+    const regEx =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regEx.test(this.email)) {
+      this.isEmailCorrect = false;
+    } else {
+      this.isEmailCorrect = true;
+    }
+    return this.isEmailCorrect;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 
-// const user_04 =  new U_04('alex', 'aleX@maiL.ua', 'querty123');
-// user_04.validateEmail();
-// console.log(user_04.isEmailCorrect);
+const user_04 = new U_04("alex", "aleX@maiL.ua", "querty123");
+user_04.validateEmail();
+console.log(user_04.isEmailCorrect);
 
 // Task 15
 // Создайте класс U_05, Наследуйтесьот U_04. Добавьте в класс свойство isUserValid, равный false.
