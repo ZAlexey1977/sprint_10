@@ -265,19 +265,32 @@ class U_04 extends U_03 {
 
 // Для проверки кода снимите комментарий ниже
 
-const user_04 = new U_04("alex", "aleX@maiL.ua", "querty123");
-user_04.validateEmail();
-console.log(user_04.isEmailCorrect);
+// const user_04 = new U_04("alex", "aleX@maiL.ua", "querty123");
+// user_04.validateEmail();
+// console.log(user_04.isEmailCorrect);
 
 // Task 15
 // Создайте класс U_05, Наследуйтесьот U_04. Добавьте в класс свойство isUserValid, равный false.
 // Добавьте метод validateUser, который выполняет валидацию eмайл и пароля. Если обе валидации true,
 // и имя пользователя не пустая строка, то ставит isUserValid равное true и возвращает true. В противном случае false.
 
-// тут пишем класс
+class U_05 extends U_04 {
+  isUserValid: boolean = false;
+  validateUser(): boolean {
+    if (
+      !super.validateEmail() ||
+      !super.validatePassword() ||
+      this.username == ""
+    ) {
+      this.isUserValid = false;
+    } else {
+      this.isUserValid = true;
+    }
+    return this.isUserValid;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-
-// const user_05 =  new U_05('alex', 'aleX@maiL.ua', 'quertTy123');
-// user_05.validateUser();
-// console.log(user_05);
+const user_05 = new U_05("alex", "aleX@maiL.ua", "quertTy123");
+user_05.validateUser();
+console.log(user_05);
